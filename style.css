@@ -1,0 +1,318 @@
+:root {
+    background-image: url(./Background/tanya-grypachevskaya-80x3QULJDN4-unsplash.jpg);
+    /* background-position: center; */
+    background-size: cover;
+    background-repeat: no-repeat;
+
+/* Variables */
+
+    --color: #aa1106;
+    --txt: rgb(185, 185, 185);
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * .9);
+    --color-shadow: rgb(32, 5, 5);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: var(--txt);
+    /* outline: auto; */
+    
+}
+
+.volcan {
+    height: 10vh;
+    padding: 5px;
+    content: url(./Icon/volcano-svgrepo-com.svg);
+}
+
+.logo{
+    display: flex;
+    flex-flow: row wrap;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* background-color: #000000; */
+    position: relative;
+    top: 0.5vh;
+    gap: 1vw;
+    padding: 15px;
+
+    justify-content:space-between;
+    align-items: center;
+}
+
+.logo div {
+    display: flex;
+    align-items: center;
+}
+
+h1{
+    color: white;
+    user-select: none;
+}
+
+/* Dark Mode */
+
+#toggle-container {
+    background-color: #f8f8f877;
+    position: relative;
+    width: 80px;
+    height: 40px;
+    box-shadow: inset 4px 4px 6px #cecece,
+                inset -4px -4px 6px #fff;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+#toggle-container.active {
+    box-shadow: inset 4px 4px 6px #aa1106,
+                inset -4px -4px 6px #aa1106;
+}
+
+.toggle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    transform: scale(0.7);
+    background-color: linear-gradient(145deg, #d8d8d8, #ffffff);
+    border-radius: 25px;
+    box-shadow: 3px 3px 8px #c4c4c4,
+               -3px -3px 8px #fff;
+    background-image: url(.//Icon/volcano-svgrepo-com.svg);
+    transition-duration: 500ms;
+}
+
+
+
+#toggle-container.active .toggle {
+    left: 40px;
+    background-image: url(.//Icon/volcano-shadow.svg);
+}
+
+/* button */
+
+button{
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--color);
+    font-weight: 700;
+    font-size: 1.2em;
+    border: 2px solid var(--color);
+    border-radius: 5px;
+    padding: 10px 40px;
+    margin: 40px 0;
+}
+
+button:hover{
+    background-color: var(--color);
+    color: black;
+    
+}
+
+/* Body & Board */
+
+.body {
+    margin-top: 30px;
+    height: 80vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+
+}
+
+.board {
+    height: 400px;
+    width: 400px;
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+/* player switch */
+
+.options {
+    display: none;
+    height: 10vh;
+    width: 20vw;
+    margin-top: 10px;
+    background-color: red;
+}
+
+#toggle-players {
+    background-color: #f8f8f877;
+    position: relative;
+    width: 80px;
+    height: 40px;
+    box-shadow: inset 4px 4px 6px #cecece,
+                inset -4px -4px 6px #fff;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+#toggle-container.x-active {
+    box-shadow: inset 4px 4px 6px #aa1106,
+                inset -4px -4px 6px #aa1106;
+    background-image: none;
+}
+
+#toggle-players.o-active {
+    box-shadow: inset 4px 4px 6px #aa1106,
+                inset -4px -4px 6px #aa1106;
+    background-image: none;
+}
+
+#toggle-players.o-active .toggle {
+    left: 40px;
+}
+
+.options .toggle {
+    position: relative;
+}
+
+
+/* Cells */
+
+.cells {
+    cursor: pointer;
+    background-color: rgb(0, 0, 0);
+    border: solid 1px var(--color);
+    height: var(--cell-size);
+    width: var(--cell-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cells:first-child,
+.cells:nth-child(2),
+.cells:nth-child(3) {
+    border-top: none;
+}
+
+.cells:nth-child(3n + 1){
+    border-left: none;
+}
+
+.cells:nth-child(3n + 3){
+    border-right: none;
+}
+
+.cells:last-child,
+.cells:nth-child(8),
+.cells:nth-child(7) {
+    border-bottom: none;
+}
+
+/* X marker */
+
+.cells.x::before,
+.cells.x::after {
+    background-color: var(--color);
+}
+
+.board.x .cells:not(.x):not(.o):hover::before,
+.board.x .cells:not(.x):not(.o):hover::after {
+    background-color: var(--color-shadow);
+
+}
+
+.cells.x::before,
+.cells.x::after,
+.board.x .cells:not(.x):not(.o):hover::before,
+.board.x .cells:not(.x):not(.o):hover::after {
+    content: "";
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    position: absolute;
+    transition-duration: 500ms;
+}
+
+.cells.x::before,
+.board.x .cells:not(.x):not(.o):hover::before {
+    transform: rotate(45deg);
+}
+
+.cells.x::after,
+.board.x .cells:not(.x):not(.o):hover::after {
+    transform: rotate(-45deg);
+}
+
+.cells.x {
+    cursor: not-allowed;
+}
+
+/* O marker */
+
+.cells.o::before,
+.cells.o::after {
+    background-color: var(--color);
+}
+
+.board.o .cells:not(.x):not(.o):hover::before,
+.board.o .cells:not(.x):not(.o):hover::after {
+    background-color: var(--color-shadow);
+
+}
+
+.cells.o::before,
+.cells.o::after,
+.board.o .cells:not(.x):not(.o):hover::before,
+.board.o .cells:not(.x):not(.o):hover:after  {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    transition-duration: 500ms;
+}
+
+.cells.o::before,
+.cells.o::after,
+.board.o .cells:not(.x):not(.o):hover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+}
+
+.cells.o::after,
+.board.o .cells:not(.x):not(.o):hover:after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: black;
+}
+
+.cells.o {
+    cursor: not-allowed;
+}
+
+
+/* winning message */
+
+.winning-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0, 0.8);
+    display: none;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--txt);
+    font-size: 5em;
+}
+
+.winning-message button {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.winning-message.show {
+    display: flex;
+}

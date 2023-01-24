@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style-active.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="./Icon/volcano-svgrepo-com.svg">
+    
+    <title>Tic Tac Toe - Volcano</title>
+</head>
+<body>
+
+    <div class="logo">
+
+        <div>
+            <img src="" alt="logo" class="volcan">
+            <h1 style="background: none;" class="volcano">Volcano</h1>
+        </div>
+
+        <Div class="pageTittle">
+            <h1>Personal Library</h1>
+        </Div>
+
+        <div id="toggle-container" class="no-active">
+
+            <div class="toggle"></div>
+            
+        </div>
+
+    </div>
+    
+    <div class="body">
+
+        <div class="options">
+
+            <div></div>
+            <div id="toggle-players" class="x-active">
+
+                <div class="toggle"></div>
+
+            </div>
+
+        </div>
+
+        <div id="board" class="board">
+
+            <div class="cells" data-cells=""></div>
+            <div class="cells" data-cells=""></div>
+            <div class="cells" data-cells=""></div>
+            <div class="cells" data-cells=""></div>
+            <div class="cells" data-cells=""></div>
+            <div class="cells" data-cells=""></div>
+            <div class="cells" data-cells=""></div>
+            <div class="cells" data-cells=""></div>
+            <div class="cells" data-cells=""></div>
+
+        </div>
+
+        <div id="winning-message" class="winning-message">
+
+            <div data-winning-message-text></div>
+            <button id="reset-button" class="button-reset">Play Again!</button>
+
+        </div>
+
+    </div>
+
+    <script src="./toggle.js"></script>
+    <script src="./scrypt.js"></script>
+
+</body>
+</html>
